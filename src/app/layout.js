@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Providers from "@/components/Providers";
+import { OrderProvider } from "@/app/order/OrderContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={geistMono.className}>
+        <OrderProvider>
         <Providers>
           <main className="max-w-6xl mx-auto my-4">
             <Header />
@@ -30,6 +32,7 @@ export default function RootLayout({ children }) {
             <Footer />
           </main>
         </Providers>
+        </OrderProvider>
       </body>
     </html>
   );

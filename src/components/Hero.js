@@ -1,7 +1,30 @@
+"use client"
+
+import { useRouter } from "next/navigation";
+import { useOrder } from "@/app/order/OrderContext";
+import { useState } from "react";
 import Image from "next/image";
 import Pizza from "@/assets/pizza.png";
 
 export default function Hero() {
+  const router = useRouter()
+  const { setOrderType, setAddress } = useOrder()
+
+  // ✅ Local address state (THIS was missing)
+  const [localAddress, setLocalAddress] = useState("")
+
+  function handleDelivery() {
+    setOrderType("delivery")
+    setAddress(localAddress)
+    router.push("/cart")
+  }
+
+  function handleCarryout() {
+    setOrderType("carryout")
+    setAddress("") // clear address
+    router.push("/cart")
+  }
+
   return (
     <section className="hero md:mt-4 flex items-center justify-between">
       
@@ -16,16 +39,26 @@ export default function Hero() {
         </h1>
 
         <p className="my-6 text-gray-500 text-sm">
-          Pizza is the missing piece that makes every day complete, <br /> a simple yet delicious joy in life.
+          Pizza is the missing piece that makes every day complete,
+          <br /> a simple yet delicious joy in life.
         </p>
 
         <div className="items-center flex gap-4 text-xl text-zinc-800">
-          Start Your Order: 
-          <button className="cursor-pointer ml-8 mr-2 flex justify-center bg-red-500 items-center gap-2 text-white px-4 py-2 rounded-full">
+          Start Your Order:
+
+          <button
+            onClick={handleDelivery}
+            className="cursor-pointer ml-8 mr-2 flex justify-center bg-red-500 items-center gap-2 text-white px-4 py-2 rounded-full"
+          >
             Delivery
           </button>
-            or
-          <button className="cursor-pointer ml-2 flex justify-center bg-red-500 items-center gap-2 text-white px-4 py-2 rounded-full">
+
+          or
+
+          <button
+            onClick={handleCarryout}
+            className="cursor-pointer ml-2 flex justify-center bg-gray-300 items-center gap-2 px-4 py-2 rounded-full"
+          >
             Carryout
           </button>
         </div>
@@ -40,5 +73,5 @@ export default function Hero() {
       </div>
 
     </section>
-  );
+  )
 }

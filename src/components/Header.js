@@ -1,8 +1,9 @@
 "use client"
 
-import Link from "next/link"
-import Image from "next/image"
-import { useSession } from "next-auth/react"
+import Link from "next/link";
+import Image from "next/image";
+import { useSession } from "next-auth/react";
+import Cart from "@/assets/shoppingCart.png";
 
 export default function Header() {
   const { data: session } = useSession()
@@ -49,6 +50,15 @@ export default function Header() {
             )}
           </Link>
         )}
+        <Link href='/cart'>
+         <Image
+              src={Cart}
+              alt="Cart"
+              width={40}
+              height={40}
+              className="mx-0"
+              />
+        </Link>
       </nav>
     </header>
   )
