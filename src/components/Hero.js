@@ -38,30 +38,11 @@ export default function Hero() {
           </span>
         </h1>
 
-        <p className="my-6 text-gray-500 text-sm">
+        <p className="my-6 text-gray-500 text-m">
           Pizza is the missing piece that makes every day complete,
           <br /> a simple yet delicious joy in life.
         </p>
 
-        <div className="items-center flex gap-4 text-xl text-zinc-800">
-          Start Your Order:
-
-          <button
-            onClick={handleDelivery}
-            className="cursor-pointer ml-8 mr-2 flex justify-center bg-red-500 items-center gap-2 text-white px-4 py-2 rounded-full"
-          >
-            Delivery
-          </button>
-
-          or
-
-          <button
-            onClick={handleCarryout}
-            className="cursor-pointer ml-2 flex justify-center bg-gray-300 items-center gap-2 px-4 py-2 rounded-full"
-          >
-            Carryout
-          </button>
-        </div>
       </div>
 
       <div className="flex justify-end">
